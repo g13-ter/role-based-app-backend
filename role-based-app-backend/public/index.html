@@ -22,8 +22,7 @@
         </div>
 
         <div id="userDropdown" class="dropdown d-none">
-          <button class="btn btn-info dropdown-toggle" id="userDropdownToggle" type="button"
-            aria-expanded="false">
+          <button class="btn btn-info dropdown-toggle" id="userDropdownToggle" type="button" aria-expanded="false">
             User
           </button>
           <ul class="dropdown-menu dropdown-menu-end" id="userDropdownMenu">
@@ -136,298 +135,552 @@
         <button class="btn btn-outline-primary mt-3" id="editProfileBtn">Edit Profile</button>
       </div>
     </section>
+    <section id="employeesSection" class="d-none">
+      <div class="d-flex align-items-center justify-content-between mt-4">
+        <h2 class="mb-0">Employees</h2>
+        <button class="btn btn-success">+ Add Employee</button>
+      </div>
+
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Dept</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="5" class="text-center text-muted">No employees.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card p-3 mt-4" style="max-width: 560px;">
+        <h5 class="mb-3">Add/Edit Employee</h5>
+        <div class="mb-3">
+          <label class="form-label">Employee ID</label>
+          <input type="text" class="form-control" placeholder="e.g. EMP-001">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">User Email</label>
+          <input type="email" class="form-control" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Position</label>
+          <input type="text" class="form-control" placeholder="e.g. QA Engineer">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Department</label>
+          <input type="text" class="form-control" value="Engineering">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Hire Date</label>
+          <input type="date" class="form-control">
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary">Save</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="accountsSection" class="d-none">
+      <div class="d-flex align-items-center justify-content-between mt-4">
+        <h2 class="mb-0">Accounts</h2>
+        <button class="btn btn-success">+ Add Account</button>
+      </div>
+
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Verified</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Admin User</td>
+              <td>admin@example.com</td>
+              <td>Admin</td>
+              <td class="text-success fw-bold">✔</td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary">Edit</button>
+                <button class="btn btn-sm btn-outline-warning">Reset Password</button>
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card p-3 mt-4" style="max-width: 560px;">
+        <h5 class="mb-3">Add/Edit Account</h5>
+        <div class="mb-3">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Last Name</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Role</label>
+          <input type="text" class="form-control" value="User">
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="accVerified">
+          <label class="form-check-label" for="accVerified">
+            Verified
+          </label>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary">Save</button>
+          <button class="btn btn-outline-secondary">Cancel</button>
+        </div>
+      </div>
+    </section>
+   <section id="departmentsSection" class="d-none">
+  <div class="d-flex align-items-center justify-content-between mt-4">
+    <h2 class="mb-0">Departments</h2>
+    <button class="btn btn-success">+ Add Department</button>
+  </div>
+
+  <div class="table-responsive mt-3">
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Engineering</td>
+          <td>Software team</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary">Edit</button>
+            <button class="btn btn-sm btn-outline-danger">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>HR</td>
+          <td>Human Resources</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary">Edit</button>
+            <button class="btn btn-sm btn-outline-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="requestsSection" class="d-none">
+  <div class="d-flex align-items-center justify-content-between mt-4">
+    <h2 class="mb-0">My Requests</h2>
+<button class="btn btn-success" id="btnNewRequest">+ New Request</button>
+  </div>
+
+  <p class="text-muted mt-3">You have no requests yet.</p>
+<button class="btn btn-success" id="btnCreateRequest">Create One</button>
+
+<div id="newRequestCard" class="card p-3 mt-4 d-none" style="max-width: 560px;">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h5 class="mb-0">New Request</h5>
+<button class="btn-close" aria-label="Close" id="btnCloseRequest"></button>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Type</label>
+      <input type="text" class="form-control" value="Equipment">
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Items</label>
+      <div class="input-group mb-2">
+        <input type="text" class="form-control" placeholder="Item name">
+        <input type="number" class="form-control" value="1" style="max-width: 90px;">
+        <button class="btn btn-outline-secondary">+</button>
+      </div>
+      <div class="input-group mb-2">
+        <input type="text" class="form-control" placeholder="Item name">
+        <input type="number" class="form-control" value="1" style="max-width: 90px;">
+        <button class="btn btn-outline-danger">×</button>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Item name">
+        <input type="number" class="form-control" value="1" style="max-width: 90px;">
+        <button class="btn btn-outline-danger">×</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary mt-2">Submit Request</button>
+  </div>
+</section>
+
   </main>
   <script>
-  const homeSection = document.getElementById("homeSection");
-  const registerSection = document.getElementById("registerSection");
-  const loginSection = document.getElementById("loginSection");
+    const homeSection = document.getElementById("homeSection");
+    const registerSection = document.getElementById("registerSection");
+    const loginSection = document.getElementById("loginSection");
 
-  const registerForm = document.getElementById("registerForm");
-  const firstNameInput = document.getElementById("regFirstName");
-  const lastNameInput = document.getElementById("regLastName");
-  const emailInput = document.getElementById("regEmail");
-  const passwordInput = document.getElementById("regPassword");
-  const alertDiv = document.getElementById("registerAlert");
+    const registerForm = document.getElementById("registerForm");
+    const firstNameInput = document.getElementById("regFirstName");
+    const lastNameInput = document.getElementById("regLastName");
+    const emailInput = document.getElementById("regEmail");
+    const passwordInput = document.getElementById("regPassword");
+    const alertDiv = document.getElementById("registerAlert");
 
-  const loginForm = document.getElementById("loginForm");
-  const loginEmailInput = document.getElementById("loginEmail");
-  const loginPasswordInput = document.getElementById("loginPassword");
-  const loginAlert = document.getElementById("loginAlert");
+    const loginForm = document.getElementById("loginForm");
+    const loginEmailInput = document.getElementById("loginEmail");
+    const loginPasswordInput = document.getElementById("loginPassword");
+    const loginAlert = document.getElementById("loginAlert");
 
-  const profileSection = document.getElementById("profileSection");
-  const profileName = document.getElementById("profileName");
-  const profileEmail = document.getElementById("profileEmail");
-  const profileRole = document.getElementById("profileRole");
-  const editProfileBtn = document.getElementById("editProfileBtn");
-  const navBrand = document.getElementById("navBrand");
-  const authLinks = document.getElementById("authLinks");
-  const userDropdown = document.getElementById("userDropdown");
-  const userDropdownToggle = document.getElementById("userDropdownToggle");
-  const userDropdownMenu = document.getElementById("userDropdownMenu");
-  const ddProfile = document.getElementById("ddProfile");
-  const ddEmployees = document.getElementById("ddEmployees");
-  const ddAccounts = document.getElementById("ddAccounts");
-  const ddDepartments = document.getElementById("ddDepartments");
-  const ddRequests = document.getElementById("ddRequests");
-  const ddLogout = document.getElementById("ddLogout");
+    const profileSection = document.getElementById("profileSection");
+    const profileName = document.getElementById("profileName");
+    const profileEmail = document.getElementById("profileEmail");
+    const profileRole = document.getElementById("profileRole");
+    const editProfileBtn = document.getElementById("editProfileBtn");
+    const navBrand = document.getElementById("navBrand");
+    const authLinks = document.getElementById("authLinks");
+    const userDropdown = document.getElementById("userDropdown");
+    const userDropdownToggle = document.getElementById("userDropdownToggle");
+    const userDropdownMenu = document.getElementById("userDropdownMenu");
+    const ddProfile = document.getElementById("ddProfile");
+    const ddEmployees = document.getElementById("ddEmployees");
+    const ddAccounts = document.getElementById("ddAccounts");
+    const ddDepartments = document.getElementById("ddDepartments");
+    const ddRequests = document.getElementById("ddRequests");
+    const ddLogout = document.getElementById("ddLogout");
 
-  const AUTH_TOKEN_KEY = "authToken";
-  let loggedInUser = null;
+    const employeesSection = document.getElementById("employeesSection");
+    const accountsSection = document.getElementById("accountsSection");
+    const departmentsSection = document.getElementById("departmentsSection");
+    const requestsSection = document.getElementById("requestsSection");
+    const btnNewRequest = document.getElementById("btnNewRequest");
+const btnCreateRequest = document.getElementById("btnCreateRequest");
+const btnCloseRequest = document.getElementById("btnCloseRequest");
+const newRequestCard = document.getElementById("newRequestCard");
 
-  async function login(username, password) {
-    try {
-      const response = await fetch('http://localhost:5500/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
 
-      const data = await response.json();
+    const AUTH_TOKEN_KEY = "authToken";
+    let loggedInUser = null;
 
-      if (response.ok) {
-        sessionStorage.setItem('authToken', data.token);
-        showDashboard(data.user);
-      } else {
-        alert('Login failed: ' + (data.error || 'Unknown error'));
+    async function login(username, password) {
+      try {
+        const response = await fetch('http://localhost:5500/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          sessionStorage.setItem('authToken', data.token);
+          showDashboard(data.user);
+        } else {
+          alert('Login failed: ' + (data.error || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Network error');
       }
-    } catch (err) {
-      alert('Network error');
     }
-  }
 
-  function showDashboard(user) {
-    applyAuthState(user);
-    showSection(profileSection);
-    loadProfile();
-  }
+    function showDashboard(user) {
+      applyAuthState(user);
+      showSection(profileSection);
+      loadProfile();
+    }
 
-  function getAuthHeader() {
-    const token = sessionStorage.getItem('authToken');
-    return token ? { Authorization: `Bearer ${token}` } : {};
-  }
+    function getAuthHeader() {
+      const token = sessionStorage.getItem('authToken');
+      return token ? { Authorization: `Bearer ${token}` } : {};
+    }
 
-  async function loadAdminDashboard() {
-    const res = await fetch('http://localhost:5500/api/admin/dashboard', {
-      headers: getAuthHeader()
+    async function loadAdminDashboard() {
+      const res = await fetch('http://localhost:5500/api/admin/dashboard', {
+        headers: getAuthHeader()
+      });
+      if (res.ok) {
+        const data = await res.json();
+        document.getElementById('content').innerText = data.message;
+      } else {
+        document.getElementById('content').innerText = 'Access denied!';
+      }
+    }
+
+    function setUserMenuVisibility(isVisible) {
+      userDropdown.classList.toggle("d-none", !isVisible);
+      authLinks.classList.toggle("d-none", isVisible);
+    }
+
+    function setAdminLinksVisible(isAdmin) {
+      const adminLinks = [ddEmployees, ddAccounts, ddDepartments];
+      adminLinks.forEach(link => link.classList.toggle("d-none", !isAdmin));
+    }
+
+    function applyAuthState(user) {
+      loggedInUser = user;
+      if (loggedInUser) {
+        userDropdownToggle.textContent =
+          loggedInUser.role === "admin" ? "Admin" : "User";
+        setUserMenuVisibility(true);
+        setAdminLinksVisible(loggedInUser.role === "admin");
+      } else {
+        userDropdownToggle.textContent = "User";
+        setUserMenuVisibility(false);
+        setAdminLinksVisible(false);
+      }
+    }
+
+    async function tryRestoreSession() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) return;
+
+      try {
+        const response = await fetch('/api/profile', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+
+        if (response.ok && data.user) {
+          applyAuthState({
+            username: data.user.username,
+            role: data.user.role
+          });
+        } else {
+          sessionStorage.removeItem(AUTH_TOKEN_KEY);
+        }
+      } catch {
+        sessionStorage.removeItem(AUTH_TOKEN_KEY);
+      }
+    }
+
+    applyAuthState(null);
+
+
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const firstName = firstNameInput.value.trim();
+      const lastName = lastNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (firstName && lastName && email && password) {
+        alertDiv.innerHTML = '<div class="alert alert-info">Registering...</div>';
+
+        const response = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: email,
+            password,
+            role: 'user',
+            firstName,
+            lastName
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alertDiv.innerHTML = `<div class="alert alert-success"><strong>Success!</strong> ${data.message || 'Registered.'}</div>`;
+          registerForm.reset();
+
+          setTimeout(() => {
+            showSection(loginSection);
+            alertDiv.innerHTML = '';
+          }, 2000);
+        } else {
+          alertDiv.innerHTML = `<div class="alert alert-danger"><strong>Error!</strong> ${data.error || data.message || 'Registration failed.'}</div>`;
+        }
+      }
     });
-    if (res.ok) {
-      const data = await res.json();
-      document.getElementById('content').innerText = data.message;
-    } else {
-      document.getElementById('content').innerText = 'Access denied!';
+
+    function showSection(section) {
+      homeSection.classList.add("d-none");
+      registerSection.classList.add("d-none");
+      loginSection.classList.add("d-none");
+      profileSection.classList.add("d-none");
+      employeesSection.classList.add("d-none");
+      accountsSection.classList.add("d-none");
+      departmentsSection.classList.add("d-none");
+      requestsSection.classList.add("d-none");
+
+
+
+
+      section.classList.remove("d-none");
     }
-  }
 
-  function setUserMenuVisibility(isVisible) {
-    userDropdown.classList.toggle("d-none", !isVisible);
-    authLinks.classList.toggle("d-none", isVisible);
-  }
 
-  function setAdminLinksVisible(isAdmin) {
-    const adminLinks = [ddEmployees, ddAccounts, ddDepartments];
-    adminLinks.forEach(link => link.classList.toggle("d-none", !isAdmin));
-  }
+    navBrand.onclick = (e) => {
+      e.preventDefault();
+      showSection(homeSection);
+    };
 
-  function applyAuthState(user) {
-    loggedInUser = user;
-    if (loggedInUser) {
-      userDropdownToggle.textContent = loggedInUser.role || "User";
-      setUserMenuVisibility(true);
-      setAdminLinksVisible(loggedInUser.role === "admin");
-    } else {
-      userDropdownToggle.textContent = "User";
-      setUserMenuVisibility(false);
-      setAdminLinksVisible(false);
-    }
-  }
+    document.getElementById("navRegister").onclick = (e) => {
+      e.preventDefault();
+      showSection(registerSection);
+    };
 
-  async function tryRestoreSession() {
-    const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
-    if (!token) return;
 
-    try {
+    document.getElementById("navLogin").onclick = (e) => {
+      e.preventDefault();
+      showSection(loginSection);
+    };
+
+    document.getElementById("cancelRegister").onclick = () => {
+      showSection(homeSection);
+    };
+
+    document.getElementById("cancelLogin").onclick = () => {
+      showSection(homeSection);
+    };
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = loginEmailInput.value.trim();
+      const password = loginPasswordInput.value.trim();
+
+      if (!email || !password) return;
+
+      loginAlert.innerHTML = '<div class="alert alert-info">Logging in...</div>';
+
+      await login(email, password);
+      loginAlert.innerHTML = '<div class="alert alert-success"><strong>Success!</strong> Login successful.</div>';
+      loginForm.reset();
+    });
+
+    async function loadProfile() {
+      if (!loggedInUser) return;
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) return;
       const response = await fetch('/api/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await response.json();
 
       if (response.ok && data.user) {
-        applyAuthState({
-          username: data.user.username,
-          role: data.user.role
-        });
+        const user = data.user;
+        const username = user.username || loggedInUser.username || "";
+        profileName.textContent = username || "User";
+        profileEmail.textContent = username;
+        profileRole.textContent = user.role || "User";
       } else {
-        sessionStorage.removeItem(AUTH_TOKEN_KEY);
-      }
-    } catch {
-      sessionStorage.removeItem(AUTH_TOKEN_KEY);
-    }
-  }
-
-  applyAuthState(null);
-
-
-  registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const firstName = firstNameInput.value.trim();
-    const lastName = lastNameInput.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    if (firstName && lastName && email && password) {
-      alertDiv.innerHTML = '<div class="alert alert-info">Registering...</div>';
-
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: email,
-          password,
-          role: 'user',
-          firstName,
-          lastName
-        })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alertDiv.innerHTML = `<div class="alert alert-success"><strong>Success!</strong> ${data.message || 'Registered.'}</div>`;
-        registerForm.reset();
-
-        setTimeout(() => {
-          showSection(loginSection);
-          alertDiv.innerHTML = '';
-        }, 2000);
-      } else {
-        alertDiv.innerHTML = `<div class="alert alert-danger"><strong>Error!</strong> ${data.error || data.message || 'Registration failed.'}</div>`;
+        profileName.textContent = "User not found";
+        profileEmail.textContent = "";
+        profileRole.textContent = "";
       }
     }
-  });
 
-  function showSection(section) {
-    homeSection.classList.add("d-none");
-    registerSection.classList.add("d-none");
-    loginSection.classList.add("d-none");
-    profileSection.classList.add("d-none");
+    function toggleUserMenu() {
+      const isOpen = userDropdownMenu.classList.contains("show");
+      userDropdownMenu.classList.toggle("show", !isOpen);
+      userDropdownToggle.setAttribute("aria-expanded", String(!isOpen));
+    }
 
+    userDropdownToggle.onclick = (e) => {
+      e.preventDefault();
+      toggleUserMenu();
+    };
 
-    section.classList.remove("d-none");
-  }
-
-
-  navBrand.onclick = (e) => {
-    e.preventDefault();
-    showSection(homeSection);
-  };
-
-  document.getElementById("navRegister").onclick = (e) => {
-    e.preventDefault();
-    showSection(registerSection);
-  };
-
-
-  document.getElementById("navLogin").onclick = (e) => {
-    e.preventDefault();
-    showSection(loginSection);
-  };
-
-  document.getElementById("cancelRegister").onclick = () => {
-    showSection(homeSection);
-  };
-
-  document.getElementById("cancelLogin").onclick = () => {
-    showSection(homeSection);
-  };
-
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = loginEmailInput.value.trim();
-    const password = loginPasswordInput.value.trim();
-
-    if (!email || !password) return;
-
-    loginAlert.innerHTML = '<div class="alert alert-info">Logging in...</div>';
-
-    await login(email, password);
-    loginAlert.innerHTML = '<div class="alert alert-success"><strong>Success!</strong> Login successful.</div>';
-    loginForm.reset();
-  });
-
-  async function loadProfile() {
-    if (!loggedInUser) return;
-    const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
-    if (!token) return;
-    const response = await fetch('/api/profile', {
-      headers: { Authorization: `Bearer ${token}` }
+    document.addEventListener("click", (e) => {
+      if (!userDropdown.contains(e.target)) {
+        userDropdownMenu.classList.remove("show");
+        userDropdownToggle.setAttribute("aria-expanded", "false");
+      }
     });
-    const data = await response.json();
 
-    if (response.ok && data.user) {
-      const user = data.user;
-      const username = user.username || loggedInUser.username || "";
-      profileName.textContent = username || "User";
-      profileEmail.textContent = username;
-      profileRole.textContent = user.role || "User";
-    } else {
-      profileName.textContent = "User not found";
-      profileEmail.textContent = "";
-      profileRole.textContent = "";
-    }
-  }
+    ddProfile.onclick = async (e) => {
+      e.preventDefault();
+      if (!loggedInUser) return;
+      showSection(profileSection);
+      await loadProfile();
+    };
 
-  function toggleUserMenu() {
-    const isOpen = userDropdownMenu.classList.contains("show");
-    userDropdownMenu.classList.toggle("show", !isOpen);
-    userDropdownToggle.setAttribute("aria-expanded", String(!isOpen));
-  }
+    const comingSoon = (e) => {
+      e.preventDefault();
+      alert("Feature coming soon!");
+    };
 
-  userDropdownToggle.onclick = (e) => {
-    e.preventDefault();
-    toggleUserMenu();
-  };
+    ddEmployees.onclick = (e) => {
+      e.preventDefault();
+      showSection(employeesSection);
+    };
+    ddAccounts.onclick = (e) => {
+      e.preventDefault();
+      showSection(accountsSection);
+    };
 
-  document.addEventListener("click", (e) => {
-    if (!userDropdown.contains(e.target)) {
-      userDropdownMenu.classList.remove("show");
-      userDropdownToggle.setAttribute("aria-expanded", "false");
-    }
-  });
+    ddDepartments.onclick = (e) => {
+      e.preventDefault();
+      showSection(departmentsSection);
+    };
 
-  ddProfile.onclick = async (e) => {
-    e.preventDefault();
-    if (!loggedInUser) return;
-    showSection(profileSection);
-    await loadProfile();
-  };
+   ddRequests.onclick = (e) => {
+  e.preventDefault();
+  showSection(requestsSection);
+};
+function showNewRequestCard() {
+  newRequestCard.classList.remove("d-none");
+};
 
-  const comingSoon = (e) => {
-    e.preventDefault();
-    alert("Feature coming soon!");
-  };
+function hideNewRequestCard() {
+  newRequestCard.classList.add("d-none");
+};
 
-  ddEmployees.onclick = comingSoon;
-  ddAccounts.onclick = comingSoon;
-  ddDepartments.onclick = comingSoon;
-  ddRequests.onclick = comingSoon;
+btnNewRequest.onclick = (e) => {
+  e.preventDefault();
+  showNewRequestCard();
+};
 
-  ddLogout.onclick = (e) => {
-    e.preventDefault();
-    sessionStorage.removeItem(AUTH_TOKEN_KEY);
-    applyAuthState(null);
-    showSection(homeSection);
-  };
+btnCreateRequest.onclick = (e) => {
+  e.preventDefault();
+  showNewRequestCard();
+};
 
-  editProfileBtn.onclick = () => {
-    alert("Edit Profile feature coming soon!");
-  };
+btnCloseRequest.onclick = (e) => {
+  e.preventDefault();
+  hideNewRequestCard();
+};
 
-  window.addEventListener("load", tryRestoreSession);
-</script>
+
+
+    ddLogout.onclick = (e) => {
+      e.preventDefault();
+      sessionStorage.removeItem(AUTH_TOKEN_KEY);
+      applyAuthState(null);
+      showSection(homeSection);
+    };
+
+    editProfileBtn.onclick = () => {
+      alert("Edit Profile feature coming soon!");
+    };
+
+    window.addEventListener("load", tryRestoreSession);
+  </script>
 
 </body>
 
 </html>
-
