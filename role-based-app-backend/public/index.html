@@ -123,22 +123,39 @@
     </section>
 
     <section id="profileSection" class="d-none">
-      <h2 class="mt-4">My Profile </h2>
-      <div class=" card p-4" style="max-width: 400px;">
-        <div id="profileName" class="fw-bold">Admin user</div>
-        <div>
-          <strong>Email:</strong> <span id="profileEmail">admin@example</span>
-        </div>
-        <div>
-          <strong>Role:</strong> <span id="profileRole">Admin</span>
-        </div>
+      <h2 class="mt-4">My Profile</h2>
+      <div class="card p-4" style="max-width: 400px;">
+        <div id="profileName" class="fw-bold mb-1">Admin user</div>
+        <div><strong>Email:</strong> <span id="profileEmail">admin@example</span></div>
+        <div><strong>Role:</strong> <span id="profileRole">Admin</span></div>
         <button class="btn btn-outline-primary mt-3" id="editProfileBtn">Edit Profile</button>
+      </div>
+
+      <div id="editProfileCard" class="card p-4 mt-3 d-none" style="max-width: 400px;">
+        <h5 class="mb-3">Edit Profile</h5>
+        <div class="mb-3">
+          <label class="form-label">First Name <small class="text-muted">(min 2 chars)</small></label>
+          <input type="text" class="form-control" id="editFirstName">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Last Name <small class="text-muted">(min 2 chars)</small></label>
+          <input type="text" class="form-control" id="editLastName">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">New Password <small class="text-muted">(min 6 chars, leave blank to keep)</small></label>
+          <input type="password" class="form-control" id="editPassword">
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary" id="saveProfileBtn">Save</button>
+          <button class="btn btn-outline-secondary" id="cancelEditProfileBtn">Cancel</button>
+        </div>
+        <div id="editProfileAlert" class="mt-3"></div>
       </div>
     </section>
     <section id="employeesSection" class="d-none">
       <div class="d-flex align-items-center justify-content-between mt-4">
         <h2 class="mb-0">Employees</h2>
-        <button class="btn btn-success">+ Add Employee</button>
+        <button class="btn btn-success" id="btnAddEmployee">+ Add Employee</button>
       </div>
 
       <div class="table-responsive mt-3">
@@ -152,7 +169,7 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="employeesTableBody">
             <tr>
               <td colspan="5" class="text-center text-muted">No employees.</td>
             </tr>
@@ -161,30 +178,37 @@
       </div>
 
       <div class="card p-3 mt-4" style="max-width: 560px;">
-        <h5 class="mb-3">Add/Edit Employee</h5>
+        <h5 class="mb-3" id="empFormTitle">Add Employee</h5>
+        <input type="hidden" id="empEditId">
         <div class="mb-3">
           <label class="form-label">Employee ID</label>
-          <input type="text" class="form-control" placeholder="e.g. EMP-001">
+          <input type="text" class="form-control" id="empEmployeeId" placeholder="e.g. EMP-001">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" id="empName" placeholder="e.g. Juan dela Cruz">
         </div>
         <div class="mb-3">
           <label class="form-label">User Email</label>
-          <input type="email" class="form-control" placeholder="name@example.com">
+          <input type="email" class="form-control" id="empUserEmail" placeholder="name@example.com">
         </div>
         <div class="mb-3">
           <label class="form-label">Position</label>
-          <input type="text" class="form-control" placeholder="e.g. QA Engineer">
+          <input type="text" class="form-control" id="empPosition" placeholder="e.g. QA Engineer">
         </div>
         <div class="mb-3">
           <label class="form-label">Department</label>
-          <input type="text" class="form-control" value="Engineering">
+          <select class="form-select" id="empDepartment">
+            <option value="">-- Select Department --</option>
+          </select>
         </div>
         <div class="mb-3">
           <label class="form-label">Hire Date</label>
-          <input type="date" class="form-control">
+          <input type="date" class="form-control" id="empHireDate">
         </div>
         <div class="d-flex gap-2">
-          <button class="btn btn-primary">Save</button>
-          <button class="btn btn-outline-secondary">Cancel</button>
+          <button class="btn btn-primary" id="empSaveBtn">Save</button>
+          <button class="btn btn-outline-secondary" id="empCancelBtn">Cancel</button>
         </div>
       </div>
     </section>
@@ -192,7 +216,7 @@
     <section id="accountsSection" class="d-none">
       <div class="d-flex align-items-center justify-content-between mt-4">
         <h2 class="mb-0">Accounts</h2>
-        <button class="btn btn-success">+ Add Account</button>
+        <button class="btn btn-success" id="btnAddAccount">+ Add Account</button>
       </div>
 
       <div class="table-responsive mt-3">
@@ -206,43 +230,36 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Admin User</td>
-              <td>admin@example.com</td>
-              <td>Admin</td>
-              <td class="text-success fw-bold">✔</td>
-              <td>
-                <button class="btn btn-sm btn-outline-primary">Edit</button>
-                <button class="btn btn-sm btn-outline-warning">Reset Password</button>
-                <button class="btn btn-sm btn-outline-danger">Delete</button>
-              </td>
-            </tr>
+          <tbody id="accountsTableBody">
           </tbody>
         </table>
       </div>
 
       <div class="card p-3 mt-4" style="max-width: 560px;">
-        <h5 class="mb-3">Add/Edit Account</h5>
+        <h5 class="mb-3" id="accFormTitle">Add Account</h5>
+        <input type="hidden" id="accEditId">
         <div class="mb-3">
           <label class="form-label">First Name</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" id="accFirstName">
         </div>
         <div class="mb-3">
           <label class="form-label">Last Name</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" id="accLastName">
         </div>
         <div class="mb-3">
           <label class="form-label">Email</label>
-          <input type="email" class="form-control">
+          <input type="email" class="form-control" id="accEmail">
         </div>
         <div class="mb-3">
-          <label class="form-label">Password</label>
-          <input type="password" class="form-control">
+          <label class="form-label">Password <small class="text-muted">(leave blank to keep)</small></label>
+          <input type="password" class="form-control" id="accPassword">
         </div>
         <div class="mb-3">
           <label class="form-label">Role</label>
-          <input type="text" class="form-control" value="User">
+          <select class="form-select" id="accRole">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
         <div class="form-check mb-3">
           <input class="form-check-input" type="checkbox" id="accVerified">
@@ -251,15 +268,15 @@
           </label>
         </div>
         <div class="d-flex gap-2">
-          <button class="btn btn-primary">Save</button>
-          <button class="btn btn-outline-secondary">Cancel</button>
+          <button class="btn btn-primary" id="accSaveBtn">Save</button>
+          <button class="btn btn-outline-secondary" id="accCancelBtn">Cancel</button>
         </div>
       </div>
     </section>
    <section id="departmentsSection" class="d-none">
   <div class="d-flex align-items-center justify-content-between mt-4">
     <h2 class="mb-0">Departments</h2>
-    <button class="btn btn-success">+ Add Department</button>
+    <button class="btn btn-success" id="btnAddDepartment">+ Add Department</button>
   </div>
 
   <div class="table-responsive mt-3">
@@ -271,67 +288,75 @@
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Engineering</td>
-          <td>Software team</td>
-          <td>
-            <button class="btn btn-sm btn-outline-primary">Edit</button>
-            <button class="btn btn-sm btn-outline-danger">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>HR</td>
-          <td>Human Resources</td>
-          <td>
-            <button class="btn btn-sm btn-outline-primary">Edit</button>
-            <button class="btn btn-sm btn-outline-danger">Delete</button>
-          </td>
-        </tr>
+      <tbody id="departmentsTableBody">
       </tbody>
     </table>
+  </div>
+
+  <div class="card p-3 mt-4" style="max-width: 560px;">
+    <h5 class="mb-3" id="deptFormTitle">Add Department</h5>
+    <input type="hidden" id="deptEditId">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" id="deptName" placeholder="e.g. Engineering">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <input type="text" class="form-control" id="deptDescription" placeholder="e.g. Software team">
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary" id="deptSaveBtn">Save</button>
+      <button class="btn btn-outline-secondary" id="deptCancelBtn">Cancel</button>
+    </div>
   </div>
 </section>
 <section id="requestsSection" class="d-none">
   <div class="d-flex align-items-center justify-content-between mt-4">
-    <h2 class="mb-0">My Requests</h2>
-<button class="btn btn-success" id="btnNewRequest">+ New Request</button>
+    <h2 class="mb-0" id="requestsTitle">My Requests</h2>
+    <button class="btn btn-success" id="btnNewRequest">+ New Request</button>
   </div>
 
-  <p class="text-muted mt-3">You have no requests yet.</p>
-<button class="btn btn-success" id="btnCreateRequest">Create One</button>
+  <div class="table-responsive mt-3">
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th id="reqColRequester" class="d-none">Requester</th>
+          <th>Type</th>
+          <th>Items</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="requestsTableBody">
+      </tbody>
+    </table>
+  </div>
 
-<div id="newRequestCard" class="card p-3 mt-4 d-none" style="max-width: 560px;">
-    <div class="d-flex align-items-center justify-content-between mb-2">
+  <div id="newRequestCard" class="card p-3 mt-4 d-none" style="max-width: 560px;">
+    <div class="d-flex align-items-center justify-content-between mb-3">
       <h5 class="mb-0">New Request</h5>
-<button class="btn-close" aria-label="Close" id="btnCloseRequest"></button>
+      <button class="btn-close" aria-label="Close" id="btnCloseRequest"></button>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Type</label>
-      <input type="text" class="form-control" value="Equipment">
+      <select class="form-select" id="reqType">
+        <option value="Equipment">Equipment</option>
+        <option value="Leave">Leave</option>
+        <option value="Supplies">Supplies</option>
+        <option value="Other">Other</option>
+      </select>
     </div>
 
-    <div class="mb-2">
+    <div class="mb-3">
       <label class="form-label">Items</label>
-      <div class="input-group mb-2">
-        <input type="text" class="form-control" placeholder="Item name">
-        <input type="number" class="form-control" value="1" style="max-width: 90px;">
-        <button class="btn btn-outline-secondary">+</button>
-      </div>
-      <div class="input-group mb-2">
-        <input type="text" class="form-control" placeholder="Item name">
-        <input type="number" class="form-control" value="1" style="max-width: 90px;">
-        <button class="btn btn-outline-danger">×</button>
-      </div>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Item name">
-        <input type="number" class="form-control" value="1" style="max-width: 90px;">
-        <button class="btn btn-outline-danger">×</button>
-      </div>
+      <div id="reqItemsList"></div>
+      <button type="button" class="btn btn-outline-secondary btn-sm mt-2" id="btnAddItem">+ Add Item</button>
     </div>
 
-    <button class="btn btn-primary mt-2">Submit Request</button>
+    <button class="btn btn-primary mt-2" id="btnSubmitRequest">Submit Request</button>
   </div>
 </section>
 
@@ -358,6 +383,13 @@
     const profileEmail = document.getElementById("profileEmail");
     const profileRole = document.getElementById("profileRole");
     const editProfileBtn = document.getElementById("editProfileBtn");
+    const editProfileCard = document.getElementById("editProfileCard");
+    const editFirstNameInput = document.getElementById("editFirstName");
+    const editLastNameInput = document.getElementById("editLastName");
+    const editPasswordInput = document.getElementById("editPassword");
+    const editProfileAlert = document.getElementById("editProfileAlert");
+    const saveProfileBtn = document.getElementById("saveProfileBtn");
+    const cancelEditProfileBtn = document.getElementById("cancelEditProfileBtn");
     const navBrand = document.getElementById("navBrand");
     const authLinks = document.getElementById("authLinks");
     const userDropdown = document.getElementById("userDropdown");
@@ -371,14 +403,53 @@
     const ddLogout = document.getElementById("ddLogout");
 
     const employeesSection = document.getElementById("employeesSection");
-    const accountsSection = document.getElementById("accountsSection");
-    const departmentsSection = document.getElementById("departmentsSection");
-    const requestsSection = document.getElementById("requestsSection");
-    const btnNewRequest = document.getElementById("btnNewRequest");
-const btnCreateRequest = document.getElementById("btnCreateRequest");
-const btnCloseRequest = document.getElementById("btnCloseRequest");
-const newRequestCard = document.getElementById("newRequestCard");
+    const employeesTableBody = document.getElementById("employeesTableBody");
 
+    const empEmployeeIdInput = document.getElementById("empEmployeeId");
+    const empUserEmailInput = document.getElementById("empUserEmail");
+    const empPositionInput = document.getElementById("empPosition");
+    const empDepartmentInput = document.getElementById("empDepartment");
+    const empHireDateInput = document.getElementById("empHireDate");
+    const empSaveBtn = document.getElementById("empSaveBtn");
+    const empCancelBtn = document.getElementById("empCancelBtn");
+    const empNameInput = document.getElementById("empName");
+    const empEditIdInput = document.getElementById("empEditId");
+    const empFormTitle = document.getElementById("empFormTitle");
+    const btnAddEmployee = document.getElementById("btnAddEmployee");
+
+    const accountsSection = document.getElementById("accountsSection");
+    const accountsTableBody = document.getElementById("accountsTableBody");
+    const btnAddAccount = document.getElementById("btnAddAccount");
+    const accFirstNameInput = document.getElementById("accFirstName");
+    const accLastNameInput = document.getElementById("accLastName");
+    const accEmailInput = document.getElementById("accEmail");
+    const accPasswordInput = document.getElementById("accPassword");
+    const accRoleInput = document.getElementById("accRole");
+    const accVerifiedInput = document.getElementById("accVerified");
+    const accEditIdInput = document.getElementById("accEditId");
+    const accFormTitle = document.getElementById("accFormTitle");
+    const accSaveBtn = document.getElementById("accSaveBtn");
+    const accCancelBtn = document.getElementById("accCancelBtn");
+    const departmentsSection = document.getElementById("departmentsSection");
+    const departmentsTableBody = document.getElementById("departmentsTableBody");
+    const btnAddDepartment = document.getElementById("btnAddDepartment");
+    const deptNameInput = document.getElementById("deptName");
+    const deptDescriptionInput = document.getElementById("deptDescription");
+    const deptEditIdInput = document.getElementById("deptEditId");
+    const deptFormTitle = document.getElementById("deptFormTitle");
+    const deptSaveBtn = document.getElementById("deptSaveBtn");
+    const deptCancelBtn = document.getElementById("deptCancelBtn");
+    const requestsSection = document.getElementById("requestsSection");
+    const requestsTableBody = document.getElementById("requestsTableBody");
+    const requestsTitle = document.getElementById("requestsTitle");
+    const reqColRequester = document.getElementById("reqColRequester");
+    const btnNewRequest = document.getElementById("btnNewRequest");
+    const btnCloseRequest = document.getElementById("btnCloseRequest");
+    const newRequestCard = document.getElementById("newRequestCard");
+    const reqTypeInput = document.getElementById("reqType");
+    const reqItemsList = document.getElementById("reqItemsList");
+    const btnAddItem = document.getElementById("btnAddItem");
+    const btnSubmitRequest = document.getElementById("btnSubmitRequest");
 
     const AUTH_TOKEN_KEY = "authToken";
     let loggedInUser = null;
@@ -396,11 +467,14 @@ const newRequestCard = document.getElementById("newRequestCard");
         if (response.ok) {
           sessionStorage.setItem('authToken', data.token);
           showDashboard(data.user);
+          return true;
         } else {
-          alert('Login failed: ' + (data.error || 'Unknown error'));
+          loginAlert.innerHTML = `<div class="alert alert-danger"><strong>Error!</strong> ${data.error || 'Invalid credentials.'}</div>`;
+          return false;
         }
       } catch (err) {
-        alert('Network error');
+        loginAlert.innerHTML = '<div class="alert alert-danger">Network error. Please try again.</div>';
+        return false;
       }
     }
 
@@ -424,6 +498,658 @@ const newRequestCard = document.getElementById("newRequestCard");
         document.getElementById('content').innerText = data.message;
       } else {
         document.getElementById('content').innerText = 'Access denied!';
+      }
+    }
+
+    async function loadEmployees() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) {
+        alert("You must be logged in as admin to see employees.");
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/employees', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.error || "Failed to load employees.");
+          return;
+        }
+
+        const list = data.employees || [];
+
+        // limpyo sa sulod sa table body
+        employeesTableBody.innerHTML = "";
+
+        if (list.length === 0) {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td colspan="5" class="text-center text-muted">No employees.</td>
+          `;
+          employeesTableBody.appendChild(row);
+          return;
+        }
+
+        // himo og row para sa matag employee
+        list.forEach(emp => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${emp.id}</td>
+            <td>${emp.name}</td>
+            <td>${emp.position}</td>
+            <td>${emp.department}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" onclick="editEmployee(${emp.id})">Edit</button>
+              <button class="btn btn-sm btn-outline-danger" onclick="deleteEmployee(${emp.id})">Delete</button>
+            </td>
+          `;
+          employeesTableBody.appendChild(row);
+        });
+      } catch (err) {
+        alert("Network error while loading employees.");
+      }
+    }
+
+    function resetEmployeeForm() {
+      empEditIdInput.value = "";
+      empEmployeeIdInput.value = "";
+      empNameInput.value = "";
+      empUserEmailInput.value = "";
+      empPositionInput.value = "";
+      empDepartmentInput.value = "";
+      empHireDateInput.value = "";
+      empFormTitle.textContent = "Add Employee";
+    }
+
+    async function saveEmployee() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) {
+        alert("You must be logged in as admin.");
+        return;
+      }
+
+      const editId = empEditIdInput.value;
+      const employeeCode = empEmployeeIdInput.value.trim();
+      const name = empNameInput.value.trim();
+      const email = empUserEmailInput.value.trim();
+      const position = empPositionInput.value.trim();
+      const department = empDepartmentInput.value.trim();
+      const hireDate = empHireDateInput.value;
+
+      if (!employeeCode || !name || !email || !position || !department) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      const url = editId ? `/api/employees/${editId}` : '/api/employees';
+      const method = editId ? 'PUT' : 'POST';
+
+      try {
+        const response = await fetch(url, {
+          method,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ employeeCode, name, email, position, department, hireDate })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.error || "Failed to save employee.");
+          return;
+        }
+
+        alert(editId ? "Employee updated!" : "Employee added!");
+        resetEmployeeForm();
+        await loadEmployees();
+      } catch (err) {
+        alert("Network error while saving employee.");
+      }
+    }
+
+    async function editEmployee(id) {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/employees/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to fetch employee.");
+          return;
+        }
+        const emp = data.employee;
+        empEditIdInput.value = emp.id;
+        empEmployeeIdInput.value = emp.employeeCode || '';
+        empNameInput.value = emp.name || '';
+        empUserEmailInput.value = emp.email || '';
+        empPositionInput.value = emp.position || '';
+        empDepartmentInput.value = emp.department || '';
+        empHireDateInput.value = emp.hireDate || '';
+        empFormTitle.textContent = "Edit Employee";
+      } catch (err) {
+        alert("Network error while loading employee.");
+      }
+    }
+
+    async function deleteEmployee(id) {
+      if (!confirm("Delete this employee?")) return;
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/employees/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to delete employee.");
+          return;
+        }
+        await loadEmployees();
+      } catch (err) {
+        alert("Network error while deleting employee.");
+      }
+    }
+
+    async function loadAccounts() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) {
+        alert("You must be logged in as admin to see accounts.");
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/accounts', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.error || "Failed to load accounts.");
+          return;
+        }
+
+        const list = data.accounts || [];
+        accountsTableBody.innerHTML = "";
+
+        if (list.length === 0) {
+          accountsTableBody.innerHTML = `<tr><td colspan="5" class="text-center text-muted">No accounts.</td></tr>`;
+          return;
+        }
+
+        list.forEach(acc => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${acc.firstName || ''} ${acc.lastName || ''}</td>
+            <td>${acc.username}</td>
+            <td>${acc.role}</td>
+            <td class="${acc.verified ? 'text-success fw-bold' : 'text-muted'}">${acc.verified ? '✔' : '✘'}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" onclick="editAccount(${acc.id})">Edit</button>
+              <button class="btn btn-sm btn-outline-danger" onclick="deleteAccount(${acc.id})">Delete</button>
+            </td>
+          `;
+          accountsTableBody.appendChild(row);
+        });
+      } catch (err) {
+        alert("Network error while loading accounts.");
+      }
+    }
+
+    function resetAccountForm() {
+      accEditIdInput.value = "";
+      accFirstNameInput.value = "";
+      accLastNameInput.value = "";
+      accEmailInput.value = "";
+      accPasswordInput.value = "";
+      accRoleInput.value = "user";
+      accVerifiedInput.checked = false;
+      accFormTitle.textContent = "Add Account";
+    }
+
+    async function saveAccount() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) {
+        alert("You must be logged in as admin.");
+        return;
+      }
+
+      const editId = accEditIdInput.value;
+      const firstName = accFirstNameInput.value.trim();
+      const lastName = accLastNameInput.value.trim();
+      const email = accEmailInput.value.trim();
+      const password = accPasswordInput.value.trim();
+      const role = accRoleInput.value || "user";
+      const verified = accVerifiedInput.checked;
+
+      if (firstName.length < 2) {
+        alert("First name must be at least 2 characters.");
+        return;
+      }
+      if (lastName.length < 2) {
+        alert("Last name must be at least 2 characters.");
+        return;
+      }
+      if (!email) {
+        alert("Email is required.");
+        return;
+      }
+      if (!editId && !password) {
+        alert("Password is required for new accounts.");
+        return;
+      }
+      if (password && password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return;
+      }
+
+      const body = { username: email, firstName, lastName, role, verified };
+      if (password) body.password = password;
+
+      const url = editId ? `/api/accounts/${editId}` : '/api/accounts';
+      const method = editId ? 'PUT' : 'POST';
+
+      try {
+        const response = await fetch(url, {
+          method,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.error || "Failed to save account.");
+          return;
+        }
+
+        alert(editId ? "Account updated!" : "Account created!");
+        resetAccountForm();
+        await loadAccounts();
+      } catch (err) {
+        alert("Network error while saving account.");
+      }
+    }
+
+    async function deleteAccount(id) {
+      if (!confirm("Delete this account?")) return;
+
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/accounts/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to delete account.");
+          return;
+        }
+
+        await loadAccounts();
+      } catch (err) {
+        alert("Network error while deleting account.");
+      }
+    }
+
+    async function editAccount(id) {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/accounts/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to fetch account.");
+          return;
+        }
+
+        const acc = data.account;
+        accEditIdInput.value = acc.id;
+        accFirstNameInput.value = acc.firstName || '';
+        accLastNameInput.value = acc.lastName || '';
+        accEmailInput.value = acc.username;
+        accPasswordInput.value = '';
+        accRoleInput.value = acc.role;
+        accVerifiedInput.checked = acc.verified || false;
+        accFormTitle.textContent = "Edit Account";
+      } catch (err) {
+        alert("Network error while loading account.");
+      }
+    }
+
+    async function populateDeptDropdown() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) return;
+      try {
+        const response = await fetch('/api/departments', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) return;
+        const list = data.departments || [];
+        empDepartmentInput.innerHTML = '<option value="">-- Select Department --</option>';
+        list.forEach(dept => {
+          const opt = document.createElement('option');
+          opt.value = dept.name;
+          opt.textContent = dept.name;
+          empDepartmentInput.appendChild(opt);
+        });
+      } catch (err) { /* silent */ }
+    }
+
+    async function loadDepartments() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) {
+        alert("You must be logged in as admin to see departments.");
+        return;
+      }
+      try {
+        const response = await fetch('/api/departments', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to load departments.");
+          return;
+        }
+        const list = data.departments || [];
+        departmentsTableBody.innerHTML = "";
+        if (list.length === 0) {
+          departmentsTableBody.innerHTML = `<tr><td colspan="3" class="text-center text-muted">No departments.</td></tr>`;
+          return;
+        }
+        list.forEach(dept => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${dept.name}</td>
+            <td>${dept.description || ''}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" onclick="editDepartment(${dept.id})">Edit</button>
+              <button class="btn btn-sm btn-outline-danger" onclick="deleteDepartment(${dept.id})">Delete</button>
+            </td>
+          `;
+          departmentsTableBody.appendChild(row);
+        });
+      } catch (err) {
+        alert("Network error while loading departments.");
+      }
+    }
+
+    function resetDeptForm() {
+      deptEditIdInput.value = "";
+      deptNameInput.value = "";
+      deptDescriptionInput.value = "";
+      deptFormTitle.textContent = "Add Department";
+    }
+
+    async function saveDepartment() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) {
+        alert("You must be logged in as admin.");
+        return;
+      }
+      const editId = deptEditIdInput.value;
+      const name = deptNameInput.value.trim();
+      const description = deptDescriptionInput.value.trim();
+      if (!name) {
+        alert("Department name is required.");
+        return;
+      }
+      const url = editId ? `/api/departments/${editId}` : '/api/departments';
+      const method = editId ? 'PUT' : 'POST';
+      try {
+        const response = await fetch(url, {
+          method,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ name, description })
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to save department.");
+          return;
+        }
+        alert(editId ? "Department updated!" : "Department added!");
+        resetDeptForm();
+        await loadDepartments();
+      } catch (err) {
+        alert("Network error while saving department.");
+      }
+    }
+
+    async function deleteDepartment(id) {
+      if (!confirm("Delete this department?")) return;
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/departments/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to delete department.");
+          return;
+        }
+        await loadDepartments();
+      } catch (err) {
+        alert("Network error while deleting department.");
+      }
+    }
+
+    async function editDepartment(id) {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/departments/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to fetch department.");
+          return;
+        }
+        const dept = data.department;
+        deptEditIdInput.value = dept.id;
+        deptNameInput.value = dept.name;
+        deptDescriptionInput.value = dept.description || '';
+        deptFormTitle.textContent = "Edit Department";
+      } catch (err) {
+        alert("Network error while loading department.");
+      }
+    }
+
+    function addRequestItem() {
+      const div = document.createElement('div');
+      div.className = 'input-group mb-2';
+      div.innerHTML = `
+        <input type="text" class="form-control req-item-name" placeholder="Item name">
+        <input type="number" class="form-control req-item-qty" value="1" style="max-width:90px;">
+        <button type="button" class="btn btn-outline-danger" onclick="this.closest('.input-group').remove()">×</button>
+      `;
+      reqItemsList.appendChild(div);
+    }
+
+    function resetRequestForm() {
+      reqTypeInput.value = "Equipment";
+      reqItemsList.innerHTML = "";
+      addRequestItem();
+    }
+
+    async function loadRequests() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) return;
+      const isAdmin = loggedInUser && loggedInUser.role === 'admin';
+      requestsTitle.textContent = isAdmin ? "All Requests" : "My Requests";
+      reqColRequester.classList.toggle("d-none", !isAdmin);
+      try {
+        const response = await fetch('/api/requests', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to load requests.");
+          return;
+        }
+        const list = data.requests || [];
+        requestsTableBody.innerHTML = "";
+        if (list.length === 0) {
+          const cols = isAdmin ? 7 : 6;
+          requestsTableBody.innerHTML = `<tr><td colspan="${cols}" class="text-center text-muted">No requests yet.</td></tr>`;
+          return;
+        }
+        list.forEach(req => {
+          const badgeClass = { pending: 'bg-warning text-dark', approved: 'bg-success', rejected: 'bg-danger' }[req.status] || 'bg-secondary';
+          const itemsText = (req.items || []).map(i => `${i.name} (x${i.qty})`).join(', ') || '—';
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${req.id}</td>
+            ${isAdmin ? `<td>${req.username}</td>` : ''}
+            <td>${req.type}</td>
+            <td><small>${itemsText}</small></td>
+            <td><span class="badge ${badgeClass}">${req.status}</span></td>
+            <td>${req.createdAt}</td>
+            <td>
+              ${isAdmin ? `
+                <button class="btn btn-sm btn-outline-success" onclick="updateRequestStatus(${req.id},'approved')">Approve</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="updateRequestStatus(${req.id},'rejected')">Reject</button>
+              ` : ''}
+              <button class="btn btn-sm btn-outline-danger" onclick="deleteRequest(${req.id})">Delete</button>
+            </td>
+          `;
+          requestsTableBody.appendChild(row);
+        });
+      } catch (err) {
+        alert("Network error while loading requests.");
+      }
+    }
+
+    async function submitRequest() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) return;
+      const type = reqTypeInput.value;
+      const items = [];
+      reqItemsList.querySelectorAll('.input-group').forEach(row => {
+        const name = row.querySelector('.req-item-name').value.trim();
+        const qty = parseInt(row.querySelector('.req-item-qty').value) || 1;
+        if (name) items.push({ name, qty });
+      });
+      try {
+        const response = await fetch('/api/requests', {
+          method: 'POST',
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ type, items })
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to submit request.");
+          return;
+        }
+        alert("Request submitted!");
+        newRequestCard.classList.add("d-none");
+        resetRequestForm();
+        await loadRequests();
+      } catch (err) {
+        alert("Network error while submitting request.");
+      }
+    }
+
+    async function deleteRequest(id) {
+      if (!confirm("Delete this request?")) return;
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/requests/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to delete request.");
+          return;
+        }
+        await loadRequests();
+      } catch (err) {
+        alert("Network error while deleting request.");
+      }
+    }
+
+    async function updateRequestStatus(id, status) {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      try {
+        const response = await fetch(`/api/requests/${id}/status`, {
+          method: 'PUT',
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ status })
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          alert(data.error || "Failed to update request status.");
+          return;
+        }
+        await loadRequests();
+      } catch (err) {
+        alert("Network error while updating request status.");
+      }
+    }
+
+    async function saveProfile() {
+      const token = sessionStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) return;
+
+      const firstName = editFirstNameInput.value.trim();
+      const lastName = editLastNameInput.value.trim();
+      const password = editPasswordInput.value.trim();
+
+      if (firstName.length < 2) {
+        editProfileAlert.innerHTML = '<div class="alert alert-danger">First name must be at least 2 characters.</div>';
+        return;
+      }
+      if (lastName.length < 2) {
+        editProfileAlert.innerHTML = '<div class="alert alert-danger">Last name must be at least 2 characters.</div>';
+        return;
+      }
+      if (password && password.length < 6) {
+        editProfileAlert.innerHTML = '<div class="alert alert-danger">Password must be at least 6 characters.</div>';
+        return;
+      }
+
+      const body = { firstName, lastName };
+      if (password) body.password = password;
+
+      try {
+        const response = await fetch('/api/profile', {
+          method: 'PUT',
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          body: JSON.stringify(body)
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          editProfileAlert.innerHTML = `<div class="alert alert-danger">${data.error || "Failed to update profile."}</div>`;
+          return;
+        }
+        editProfileAlert.innerHTML = '<div class="alert alert-success">Profile updated!</div>';
+        await loadProfile();
+        setTimeout(() => {
+          editProfileCard.classList.add("d-none");
+          editProfileAlert.innerHTML = '';
+        }, 1500);
+      } catch (err) {
+        editProfileAlert.innerHTML = '<div class="alert alert-danger">Network error.</div>';
       }
     }
 
@@ -485,34 +1211,49 @@ const newRequestCard = document.getElementById("newRequestCard");
       const email = emailInput.value.trim();
       const password = passwordInput.value.trim();
 
-      if (firstName && lastName && email && password) {
-        alertDiv.innerHTML = '<div class="alert alert-info">Registering...</div>';
+      if (!firstName || !lastName || !email || !password) {
+        alertDiv.innerHTML = '<div class="alert alert-danger">All fields are required.</div>';
+        return;
+      }
+      if (firstName.length < 2) {
+        alertDiv.innerHTML = '<div class="alert alert-danger">First name must be at least 2 characters.</div>';
+        return;
+      }
+      if (lastName.length < 2) {
+        alertDiv.innerHTML = '<div class="alert alert-danger">Last name must be at least 2 characters.</div>';
+        return;
+      }
+      if (password.length < 6) {
+        alertDiv.innerHTML = '<div class="alert alert-danger">Password must be at least 6 characters.</div>';
+        return;
+      }
 
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: email,
-            password,
-            role: 'user',
-            firstName,
-            lastName
-          })
-        });
+      alertDiv.innerHTML = '<div class="alert alert-info">Registering...</div>';
 
-        const data = await response.json();
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: email,
+          password,
+          role: 'user',
+          firstName,
+          lastName
+        })
+      });
 
-        if (response.ok) {
-          alertDiv.innerHTML = `<div class="alert alert-success"><strong>Success!</strong> ${data.message || 'Registered.'}</div>`;
-          registerForm.reset();
+      const data = await response.json();
 
-          setTimeout(() => {
-            showSection(loginSection);
-            alertDiv.innerHTML = '';
-          }, 2000);
-        } else {
-          alertDiv.innerHTML = `<div class="alert alert-danger"><strong>Error!</strong> ${data.error || data.message || 'Registration failed.'}</div>`;
-        }
+      if (response.ok) {
+        alertDiv.innerHTML = `<div class="alert alert-success"><strong>Success!</strong> ${data.message || 'Registered.'}</div>`;
+        registerForm.reset();
+
+        setTimeout(() => {
+          showSection(loginSection);
+          alertDiv.innerHTML = '';
+        }, 2000);
+      } else {
+        alertDiv.innerHTML = `<div class="alert alert-danger"><strong>Error!</strong> ${data.error || data.message || 'Registration failed.'}</div>`;
       }
     });
 
@@ -567,9 +1308,11 @@ const newRequestCard = document.getElementById("newRequestCard");
 
       loginAlert.innerHTML = '<div class="alert alert-info">Logging in...</div>';
 
-      await login(email, password);
-      loginAlert.innerHTML = '<div class="alert alert-success"><strong>Success!</strong> Login successful.</div>';
-      loginForm.reset();
+      const success = await login(email, password);
+      if (success) {
+        loginAlert.innerHTML = '<div class="alert alert-success"><strong>Success!</strong> Login successful.</div>';
+        loginForm.reset();
+      }
     });
 
     async function loadProfile() {
@@ -583,10 +1326,13 @@ const newRequestCard = document.getElementById("newRequestCard");
 
       if (response.ok && data.user) {
         const user = data.user;
-        const username = user.username || loggedInUser.username || "";
-        profileName.textContent = username || "User";
-        profileEmail.textContent = username;
+        const fullName = [user.firstName, user.lastName].filter(Boolean).join(' ') || user.username || "User";
+        profileName.textContent = fullName;
+        profileEmail.textContent = user.username || "";
         profileRole.textContent = user.role || "User";
+        editFirstNameInput.value = user.firstName || '';
+        editLastNameInput.value = user.lastName || '';
+        editPasswordInput.value = '';
       } else {
         profileName.textContent = "User not found";
         profileEmail.textContent = "";
@@ -624,46 +1370,95 @@ const newRequestCard = document.getElementById("newRequestCard");
       alert("Feature coming soon!");
     };
 
-    ddEmployees.onclick = (e) => {
+    ddEmployees.onclick = async (e) => {
       e.preventDefault();
       showSection(employeesSection);
+      resetEmployeeForm();
+      await Promise.all([loadEmployees(), populateDeptDropdown()]);
     };
-    ddAccounts.onclick = (e) => {
+
+    btnAddEmployee.onclick = () => {
+      resetEmployeeForm();
+    };
+
+    empSaveBtn.onclick = async (e) => {
+      e.preventDefault();
+      await saveEmployee();
+    };
+
+    empCancelBtn.onclick = (e) => {
+      e.preventDefault();
+      resetEmployeeForm();
+    };
+
+    ddAccounts.onclick = async (e) => {
       e.preventDefault();
       showSection(accountsSection);
+      resetAccountForm();
+      await loadAccounts();
     };
 
-    ddDepartments.onclick = (e) => {
+    btnAddAccount.onclick = () => {
+      resetAccountForm();
+    };
+
+    accSaveBtn.onclick = async (e) => {
+      e.preventDefault();
+      await saveAccount();
+    };
+
+    accCancelBtn.onclick = (e) => {
+      e.preventDefault();
+      resetAccountForm();
+    };
+
+    ddDepartments.onclick = async (e) => {
       e.preventDefault();
       showSection(departmentsSection);
+      resetDeptForm();
+      await loadDepartments();
     };
 
-   ddRequests.onclick = (e) => {
-  e.preventDefault();
-  showSection(requestsSection);
-};
-function showNewRequestCard() {
-  newRequestCard.classList.remove("d-none");
-};
+    btnAddDepartment.onclick = () => {
+      resetDeptForm();
+    };
 
-function hideNewRequestCard() {
-  newRequestCard.classList.add("d-none");
-};
+    deptSaveBtn.onclick = async (e) => {
+      e.preventDefault();
+      await saveDepartment();
+    };
 
-btnNewRequest.onclick = (e) => {
-  e.preventDefault();
-  showNewRequestCard();
-};
+    deptCancelBtn.onclick = (e) => {
+      e.preventDefault();
+      resetDeptForm();
+    };
 
-btnCreateRequest.onclick = (e) => {
-  e.preventDefault();
-  showNewRequestCard();
-};
+    ddRequests.onclick = async (e) => {
+      e.preventDefault();
+      showSection(requestsSection);
+      await loadRequests();
+    };
 
-btnCloseRequest.onclick = (e) => {
-  e.preventDefault();
-  hideNewRequestCard();
-};
+    btnNewRequest.onclick = (e) => {
+      e.preventDefault();
+      resetRequestForm();
+      newRequestCard.classList.remove("d-none");
+    };
+
+    btnCloseRequest.onclick = (e) => {
+      e.preventDefault();
+      newRequestCard.classList.add("d-none");
+    };
+
+    btnAddItem.onclick = (e) => {
+      e.preventDefault();
+      addRequestItem();
+    };
+
+    btnSubmitRequest.onclick = async (e) => {
+      e.preventDefault();
+      await submitRequest();
+    };
 
 
 
@@ -675,7 +1470,18 @@ btnCloseRequest.onclick = (e) => {
     };
 
     editProfileBtn.onclick = () => {
-      alert("Edit Profile feature coming soon!");
+      editProfileCard.classList.toggle("d-none");
+      editProfileAlert.innerHTML = '';
+    };
+
+    saveProfileBtn.onclick = async (e) => {
+      e.preventDefault();
+      await saveProfile();
+    };
+
+    cancelEditProfileBtn.onclick = () => {
+      editProfileCard.classList.add("d-none");
+      editProfileAlert.innerHTML = '';
     };
 
     window.addEventListener("load", tryRestoreSession);
